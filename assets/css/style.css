@@ -2,14 +2,36 @@
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --body-bg: #f7f7f7;
+  --box-income-expense: #fff;
+  --transactions: #fff;
+  --transactions-text: #333;
+  --border-input: #dedede;
+
+}
+
+.dark-mode:root {
+  --box-shadow: 0 1px 3px rgba(255, 255, 255, 0.12), 0 1px 2px rgba(255, 255, 255, 0.24);
+  --body-bg: #101010;
+  --h2-color: #FFFFFF;
+  --white-color: #FFFFFF;
+  --h4-color: #FFFFFF;
+  --box-income-expense: #232323;
+  --transactions: #232323;
+  --transactions-text: #fff;
+  --border-input: #474747;
+
 }
 
 * {
   box-sizing: border-box;
+  
 }
 
+
+
 body {
-  background-color: #f7f7f7;
+  background-color: var(--body-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +39,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  
 }
 
 .container {
@@ -24,25 +47,40 @@ body {
   width: 350px;
 }
 
+input{
+  background-color: var(--box-income-expense);
+  color: var(--white-color);
+}
+
+
+
+
+
 h1 {
   letter-spacing: 1px;
   margin: 0;
   color: #2e75cc;
 }
 
+h2{
+  color: var(--h2-color);
+}
+
 h3 {
+  color: var(--white-color);
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   margin: 40px 0 10px;
 }
 
 h4 {
+  color: var(--h4-color);
   margin: 0;
   text-transform: uppercase;
 }
 
 .inc-exp-container {
-  background-color: #fff;
+  background-color: var(--box-income-expense);
   box-shadow: var(--box-shadow);
   padding: 20px;
   display: flex;
@@ -59,6 +97,8 @@ h4 {
   border-right: 1px solid #dedede;
 }
 
+
+
 .money {
   font-size: 20px;
   letter-spacing: 1px;
@@ -74,13 +114,15 @@ h4 {
 }
 
 label {
+  color: var(--white-color);
   display: inline-block;
   margin: 10px 0;
 }
 
 input[type='text'],
 input[type='number'] {
-  border: 1px solid #dedede;
+  border: 1px solid;
+  border-color: var(--border-input);
   border-radius: 2px;
   display: block;
   font-size: 16px;
@@ -113,9 +155,9 @@ input[type='number'] {
 }
 
 .transactions li {
-  background-color: #fff;
+  background-color: var(--transactions);
   box-shadow: var(--box-shadow);
-  color: #333;
+  color: var(--transactions-text);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -149,4 +191,50 @@ input[type='number'] {
 
 .transactions li:hover .delete-btn {
   opacity: 1;
+}
+
+
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#232323;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
 }

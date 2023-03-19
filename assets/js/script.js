@@ -31,9 +31,6 @@ const addTransactionIntoDOM = ({ amount, name, id }) => {
     <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
     `
     transactionUl.append(li)
-
-
-
 }
 
 const getExpenses = transactionsAmounts => Math.abs (transactionsAmounts
@@ -108,3 +105,10 @@ const handleFormSubmit = event => {
 } 
 
 form.addEventListener('submit', handleFormSubmit)
+
+const checkbox = document.getElementById('checkbox');
+const html = document.querySelector('html')
+
+checkbox.addEventListener('change', ()=>{
+ html.classList.toggle('dark-mode')
+})
